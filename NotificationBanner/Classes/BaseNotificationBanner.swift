@@ -276,7 +276,7 @@ open class BaseNotificationBanner: UIView {
         }
     }
 
-    internal func spacerViewHeight() -> CGFloat {
+    open func spacerViewHeight() -> CGFloat {
         if shouldAdjustForDynamicIsland() {
             return 44.0
         } else if shouldAdjustForNotchFeaturedIphone() {
@@ -398,14 +398,14 @@ open class BaseNotificationBanner: UIView {
             if let parentViewController = parentViewController, parentViewController.view != nil {
                 parentViewController.view.addSubview(self)
                 if statusBarShouldBeShown() {
-//                    appWindow?.windowLevel = UIWindow.Level.normal
+                    appWindow?.windowLevel = UIWindow.Level.normal
                 }
             } else {
                 appWindow?.addSubview(self)
                 if statusBarShouldBeShown() && !(parentViewController == nil && bannerPosition == .top) {
-//                    appWindow?.windowLevel = UIWindow.Level.normal
+                    appWindow?.windowLevel = UIWindow.Level.normal
                 } else {
-//                    appWindow?.windowLevel = UIWindow.Level.statusBar + 1
+                    appWindow?.windowLevel = UIWindow.Level.statusBar + 1
                 }
             }
 
@@ -607,7 +607,7 @@ open class BaseNotificationBanner: UIView {
 
             self.bannerQueue.showNext(callback: { (isEmpty) in
                 if isEmpty || self.statusBarShouldBeShown() {
-//                    self.appWindow?.windowLevel = UIWindow.Level.normal
+                    self.appWindow?.windowLevel = UIWindow.Level.normal
                 }
             })
         }
